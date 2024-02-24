@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="shortcut icon" href="/IMG/Logo.png" type="image/x-icon">
+    <title>Alura: Encriptador de texto</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="contenedor-logo">
+            <img class="logo" src="/IMG/Logo.png" alt="Logo">
+            <h2>Desafio Alura One: Encriptador de textos</h2>
+        </div>
+        <nav>
+            <a href="">Inicio</a>
+            <a href="#encriptador">Encriptador</a>
+            <a href="#contraseña">Contraseña</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="inicio">
+        <div class="caja-izquierda">
+            <img src="/IMG/1.png" alt="Ilustracion de seguridad">
+        </div>
+        <div class="caja-derecha">
+            <h2>¿Que es la encriptacion?</h2>
+            <p>La encriptación es un proceso de seguridad informática que se utiliza para proteger la confidencialidad
+                de la información. Consiste en transformar datos legibles o "en texto claro" en un formato ilegible o
+                "cifrado", utilizando algoritmos matemáticos y una clave secreta. Esta clave es necesaria para revertir
+                el proceso y volver a descifrar la información, de manera que solo las personas autorizadas que poseen
+                la clave pueden acceder a los datos en su forma original.</p>
+            <p>La encriptación se utiliza en una amplia variedad de aplicaciones, desde la protección de datos
+                personales en dispositivos móviles y transacciones en línea hasta la seguridad de comunicaciones
+                sensibles y la protección de información confidencial en empresas y gobiernos. También desempeña un
+                papel fundamental en la seguridad de la información en el ámbito militar y gubernamental, así como en la
+                protección de datos sensibles en el entorno empresarial.</p>
+        </div>
+    </section>
+
+    <div class="Encriptador" id="encriptador">
+        <div class="izquierda-caja">
+            <div class="caja-1">
+                <h3>Introduce el texto que quieres encriptar:</h3>
+                <textarea id="texto_sin_cifrar" rows="5" cols="50"></textarea>
+                <button onclick="encriptar()">Encriptar</button>
+            </div>
+            <div class="caja-2">
+                <h3>Texto encriptado:</h3>
+                <textarea id="texto_cifrado" rows="5" cols="50"></textarea>
+                <button onclick="descifrar()">Descifrar</button>
+            </div>
+        </div>
+
+        <div class="derecha-caja">
+            <div class="caja-3">
+                <h3>Texto descifrado:</h3>
+                <textarea id="texto_descifrado" rows="5" cols="50"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!--Crea una contraseña segura-->
+
+    <section class="contraseña" id="contraseña">
+        <div class="caja-derecha">
+            <h2>¿Que son las contraseñas seguras?</h2>
+            <p>Las contraseñas seguras son combinaciones de caracteres que protegen el acceso a cuentas, dispositivos o
+                información personal en línea. Están diseñadas para garantizar la seguridad y la privacidad de datos, y
+                son esenciales en un mundo digital cada vez más interconectado.</p>
+            <p>Para crear contraseñas seguras, se recomienda utilizar una combinación de letras mayúsculas y minúsculas,
+                números y caracteres especiales. Además, es importante evitar contraseñas obvias, como "123456" o
+                "password", y no reutilizar las contraseñas en múltiples cuentas. La gestión de contraseñas a través de
+                un administrador de contraseñas también puede facilitar la creación y el almacenamiento seguro de
+                contraseñas únicas para cada cuenta. En resumen, las contraseñas seguras son una herramienta crucial en
+                la protección de tu identidad y datos en un entorno en línea cada vez más vulnerable a amenazas de
+                seguridad.</p>
+        </div>
+        <div class="caja-izquierda">
+            <img src="/IMG/2.png" alt="Ilustracion de seguridad">
+        </div>
+    </section>
+
+    <div class="crea-contraseña" id="crea-contraseña">
+        <div class="contenedor-cajas">
+            <div class="caja-1">
+                <h3>Crea tu contraseña segura</h3>
+                <label for="passwordLength">Longitud de la contraseña:</label>
+                <input type="number" id="passwordLength" value="15">
+                <button onclick="generateAndDisplayPassword()">Generar contraseña</button>
+            </div>
+            <div class="caja-2">
+                <h3>Contraseña generada:</h3>
+                <input type="text" id="password" readonly>
+            </div>
+        </div>
+    </div>
+
+    <div class="contacto" id="contacto">
+        <form id="my-form" action="https://formspree.io/f/mdorklyw" method="POST">
+            <h3>Contacto:</h3>
+            <input placeholder="Nombre" type="text" id="nombre" name="nombre" required>
+
+            <input placeholder="Apellido" type="text" id="apellido" name="apellido" required>
+
+            <input placeholder="Correo" type="email" id="email" name="email" required>
+
+            <select id="interes" name="interes" required>
+                <option value="">Servicio de interes</option>
+                <option value="Diseno web">Diseño web</option>
+                <option value="Paginas web">Páginas web</option>
+                <option value="Aplicacion web">Aplicación web</option>
+                <option value="Consultoria">Consultoría</option>
+            </select>
+            <textarea placeholder="Agrega un descripcion..." id="mensaje" name="mensaje" rows="4" cols="50"
+                required></textarea>
+
+            <!-- Campo oculto para detección de spam -->
+            <input type="text" name="_gotcha" style="display:none">
+
+            <input class="bttn" type="submit" value="Enviar">
+        </form>
+        <div class="cont-img">
+            <img src="/IMG/5.png" alt="Ilustracion">
+        </div>
+    </div>
+
+    <div class="cv">
+        <div class="cont-cv">
+            <h2>Descarga mi CV</h2>
+            <a target="_blank"
+                href="https://drive.google.com/file/d/1jBIPUt9EVuax56PaNhbqoaVHAU1syDpH/view?usp=sharing">¡Descarga
+                mi CV!</a>
+        </div>
+        <div class="cont-img">
+            <img src="/IMG/3.png" alt="Ilustracion">
+        </div>
+    </div>
+
+    <!--Inicio de footer-->
+    <footer>
+        <div class="contenedor-1">
+            <div class="caja-1">
+                <p>Desafio Alura: Desarrolla un encriptador de textos</p>
+                <p>Nombre: Irving Alejandro Hernandez Ramirez</p>
+                <p>Estudiante de Alura One Oracle Next Education</p>
+                <p>Fecha: 30/04/2023</p>
+            </div>
+            <div class="caja-2">
+                <a target="_blank" href="https://github.com/alexxhdz"><ion-icon name="logo-github"></ion-icon></a>
+                <a target="_blank" href="https://www.linkedin.com/in/alejandrohernandezda/"><ion-icon
+                        name="logo-linkedin"></ion-icon></a>
+                <a target="_blank" href="https://app.aluracursos.com/emprega-one/profile/jandro"><ion-icon
+                        name="school-outline"></ion-icon></a>
+            </div>
+            <div class="caja-3">
+                <img src="/IMG/aluraoracle.png" alt="Logo Alura + Oracle">
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+
+        // Función para encriptar el texto
+        function encriptar() {
+            var textoSinCifrar = document.getElementById('texto_sin_cifrar').value;
+            // Lógica de encriptación aquí (reemplazar con tu implementación)
+            var textoCifrado = encriptarTexto(textoSinCifrar); // Reemplaza "encriptarTexto" con tu lógica
+            document.getElementById('texto_cifrado').value = textoCifrado;
+        }
+
+        // Función para descifrar el texto
+        function descifrar() {
+            var textoCifrado = document.getElementById('texto_cifrado').value;
+            // Lógica de descifrado aquí (reemplazar con tu implementación)
+            var textoDescifrado = descifrarTexto(textoCifrado); // Reemplaza "descifrarTexto" con tu lógica
+            document.getElementById('texto_descifrado').value = textoDescifrado;
+        }
+
+        // Función para generar y mostrar una contraseña segura
+        function generateAndDisplayPassword() {
+            var passwordLength = document.getElementById('passwordLength').value;
+            // Lógica para generar una contraseña segura aquí (reemplazar con tu implementación)
+            var generatedPassword = generarContraseñaSegura(passwordLength); // Reemplaza "generarContraseñaSegura" con tu lógica
+            document.getElementById('password').value = generatedPassword;
+        }
+
+        document.getElementById('my-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evitar el envío del formulario predeterminado
+
+            // Obtener los datos del formulario
+            var formData = new FormData(this);
+
+            // Envío de la solicitud AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'https://formspree.io/f/mdorklyw');
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState !== XMLHttpRequest.DONE) return;
+                if (xhr.status === 200) {
+                    // Acción personalizada después del envío exitoso
+                    alert('El correo ha sido enviado correctamente.');
+                    // Redireccionar a tu página
+                    window.location.href = '/gracias.html';
+                } else {
+                    // Acción personalizada en caso de error
+                    alert('Hubo un error al enviar el correo. Por favor, inténtalo de nuevo más tarde.');
+                }
+            };
+            xhr.send(formData);
+        });
+    </script>
+
+    <script src="/JS/contSegura.js"></script>
+    <script src="/JS/criptografia.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,633 @@
+@mixin boton() {
+    background-color: #DE9858;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+    text-decoration: none;
+    text-align: center;
+    &:hover{
+        background-color: #A5CAD2;
+    }
+    &:active{
+        background-color: #fff;
+        border: 1px solid black;
+        color: #000;
+    }
+}
+
+@mixin contendores() {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 600px;
+    border: 2px solid rgba(211, 211, 211, 0.76);
+    border-radius: 15px;
+    margin: 35px;
+}
+
+@mixin caja() {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 15px;
+    padding: 15px;
+    width: 40%;
+    margin-bottom: 0px;
+}
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    header {
+        background-color: #81A378;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        padding: 5px;
+
+        .contenedor-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+
+            .logo {
+                padding: 15px;
+                width: 100px;
+            }
+
+            h2 {
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+
+        nav {
+            margin-right: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            a {
+                text-decoration: none;
+                color: #fff;
+                margin-right: 10px;
+                padding: 10px;
+
+                &:hover {
+                    border-bottom: 2px solid #DE9858;
+                }
+
+                &:active {
+                    border-bottom: 2px solid #ffffff;
+                }
+            }
+        }
+
+    }
+
+    .inicio {
+        @include contendores();
+
+        .caja-izquierda {
+            @include caja();
+
+            img {
+                width: 500px;
+            }
+
+        }
+
+        .caja-derecha {
+            @include caja();
+
+            h2 {
+                font-size: 50px;
+                padding: 5px;
+            }
+
+            p {
+                letter-spacing: 1px;
+                padding: 5px;
+                line-height: 25px;
+                text-align: justify
+            }
+        }
+    }
+
+    .Encriptador {
+        @include contendores();
+
+        .izquierda-caja {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            width: 40%;
+
+            .caja-1 {
+                @include caja();
+
+                h3 {
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                textarea {
+                    padding: 10px;
+                }
+
+                button {
+                    @include boton();
+                }
+            }
+
+            .caja-2 {
+                @include caja();
+
+                h3 {
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                textarea {
+                    padding: 10px;
+                }
+
+                button {
+                    @include boton();
+                }
+            }
+        }
+
+        .derecha-caja {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            width: 40%;
+            border: 2px solid rgba(211, 211, 211, 0.76);
+            height: 80%;
+
+            .caja-3 {
+                @include caja();
+
+                h3 {
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                textarea {
+                    padding: 10px;
+                }
+            }
+        }
+    }
+
+    .contraseña {
+        @include contendores();
+
+        .caja-izquierda {
+            @include caja();
+
+            img {
+                width: 500px;
+            }
+
+        }
+
+        .caja-derecha {
+            @include caja();
+
+            h2 {
+                font-size: 50px;
+                padding: 5px;
+            }
+
+            p {
+                letter-spacing: 1px;
+                padding: 5px;
+                line-height: 25px;
+                text-align: justify
+            }
+        }
+    }
+
+    .crea-contraseña {
+        @include contendores();
+
+        .contenedor-cajas {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+
+            .caja-1 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                h3 {
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                label {
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                input {
+                    padding: 10px;
+                    text-align: center;
+                }
+
+                button {
+                    @include boton();
+                }
+            }
+
+            .caja-2 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                h3 {
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                input {
+                    padding: 11px;
+                    text-align: center;
+                    width: 400px;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+
+    .contacto {
+        @include contendores();
+
+        form {
+            width: 45%;
+            margin: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            @include caja();
+
+            h3 {
+                text-align: center;
+                color: #080717;
+                font-weight: 600;
+                margin: 5px;
+            }
+
+            input,
+            select,
+            option {
+                width: 300px;
+                height: 40px;
+                padding: 10px;
+                margin: 8px;
+                outline: none;
+                border: 2px solid #08071781;
+                border-radius: 5px;
+            }
+
+            textarea {
+                width: 300px;
+                height: 100px;
+                padding: 10px;
+                margin: 8px;
+                outline: none;
+                border: 2px solid #08071781;
+                border-radius: 5px;
+            }
+
+            .bttn {
+                @include boton();
+            }
+        }
+
+        .cont-img {
+            @include caja();
+
+            img {
+                width: 500px;
+            }
+        }
+    }
+
+    .cv {
+        @include contendores();
+
+        .cont-cv {
+            @include caja();
+
+            h2 {
+                text-align: center;
+                color: #0c2132;
+                font-weight: 600;
+                font-size: 30px;
+                margin: 5px;
+            }
+
+            a {
+                @include boton();
+            }
+        }
+
+        .cont-img {
+            @include caja();
+
+            img {
+                width: 500px;
+            }
+        }
+    }
+
+    footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #81A378;
+        padding: 15px;
+
+        .contenedor-1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .caja-1 {
+                padding: 15px;
+
+                p {
+                    color: #ffffff;
+                    letter-spacing: 1px;
+                    line-height: 25px;
+                }
+            }
+
+            .caja-2 {
+                padding: 15px;
+                padding-left: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                a {
+                    padding: 15px;
+
+                    ion-icon {
+                        font-size: 50px;
+                        color: #ffffff;
+                        &:hover{
+                            color: #DE9858;
+                        }
+                        &:active{
+                            color: #A5CAD2;
+                        }
+                        
+                    }
+                    
+                }
+            }
+
+            .caja-3 {
+                padding: 15px;
+
+            }
+        }
+    }
+}
+
+@media (max-width: 680px) {
+    header {
+        flex-direction: column;
+        padding: 5px;
+
+        .contenedor-logo {
+
+            .logo {
+                width: 80px !important;
+                padding: 5px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+        }
+
+        nav {
+            display: none !important;
+            a {}
+        }
+
+    }
+
+    .inicio {
+        flex-direction: column !important;
+        height: 100% !important;
+        .caja-izquierda {
+            
+            width: 100% !important;
+            img {
+                width: 300px !important;
+            }
+
+        }
+        .caja-derecha {
+            
+            width: 100% !important;
+            h2 {
+                font-size: 20px !important;
+
+
+            }
+
+            p {
+                font-size: 12px !important;
+            }
+        }
+
+    }
+
+    .Encriptador {
+        flex-direction: column !important;
+        height: 100% !important;
+        .izquierda-caja {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            width: 100% !important;
+
+            .caja-1 {
+                width: 100% !important;
+
+                h3 {
+                    padding: 10px !important;
+                    text-align: center;
+                }
+
+                textarea {
+                    padding: 10px !important;
+                    border-radius: 8px;
+                    width: 90%;
+                }
+
+                button {
+                    @include boton();
+                }
+            }
+
+            .caja-2 {
+                width: 100% !important;
+
+                h3 {
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                textarea {
+                    padding: 10px !important;
+                    border-radius: 8px;
+                    width: 90%;
+                }
+
+                button {
+                    @include boton();
+                }
+            }
+        }
+
+        .derecha-caja {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            width: 90% !important;
+            border: 2px solid rgba(211, 211, 211, 0.76);
+            height: 80%;
+            border-radius: 15px;
+            margin: 18px;
+
+            .caja-3 {
+                width: 100% !important;
+
+                h3 {
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                textarea {
+                    padding: 10px !important;
+                    border-radius: 8px;
+                    width: 90%;
+                }
+            }
+        }
+    }
+
+    .contraseña {
+        flex-direction: column !important;
+        height: 100% !important;
+        .caja-izquierda {
+            
+            width: 100% !important;
+            img {
+                width: 300px !important;
+            }
+
+        }
+        .caja-derecha {
+            
+            width: 100% !important;
+            h2 {
+                font-size: 20px !important;
+
+
+            }
+
+            p {
+                font-size: 12px !important;
+            }
+        }
+    }
+
+    .crea-contraseña {
+        flex-direction: column !important;
+        height: 100% !important;
+        .contenedor-cajas {
+            flex-direction: column !important;
+            .caja-1{
+                input{
+                    padding: 10px !important;
+                    border-radius: 8px;
+                    width: 90% !important;
+                }
+            }
+            .caja-2{
+                input{
+                    padding: 10px !important;
+                    border-radius: 8px;
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+
+    .contacto {
+        flex-direction: column !important;
+        height: 100% !important;
+        .cont-img {
+
+            img {
+                width: 300px !important;
+            }
+        }
+    }
+
+    .cv {
+        flex-direction: column !important;
+        height: 100% !important;
+        .cont-img {
+
+            img {
+                width: 300px !important;
+            }
+        }
+    }
+
+    footer {
+        flex-direction: column !important;
+        .contenedor-1 {
+            flex-direction: column !important;
+            .caja-1{
+                p{
+                    text-align: center;
+                }
+            }
+            .caja-3{
+                img{
+                    width: 300px;
+                }
+            }
+        }
+    }
+}
