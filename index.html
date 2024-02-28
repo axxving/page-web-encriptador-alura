@@ -68,22 +68,31 @@
     <!-- Modal de Advertencia -->
     <div class="modal fade" id="modalAdvertencia" tabindex="-1" aria-labelledby="modalAdvertenciaLabel"
         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-modal">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalAdvertenciaLabel">Advertencia</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="modalAdvertenciaLabel">
+                        <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
+                        Advertencia
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    No puedes ingresar números, símbolos o letras mayúsculas. Por favor, ingresa solo letras en
-                    minúsculas.
+                    <p class="lead p-m">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        No puedes ingresar números, símbolos o letras mayúsculas. Por favor, ingresa solo letras en
+                        minúsculas.
+                    </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 
     <!-- Scroll Reveal -->
@@ -95,63 +104,6 @@
     <!-- Boxicons -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="/js/main.js"></script>
-
-    <script>
-        function validarTexto() {
-            const inputTexto = document.getElementById('inputTexto');
-            const modalAdvertencia = new bootstrap.Modal(document.getElementById('modalAdvertencia'));
-
-            // Expresión regular para permitir solo letras minúsculas
-            const regex = /^[a-z]+$/;
-
-            if (!regex.test(inputTexto.value)) {
-                // Mostrar el modal de advertencia
-                modalAdvertencia.show();
-                // Limpiar el contenido del textarea
-                inputTexto.value = '';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const btnEncriptar = document.getElementById('btnEncriptar');
-            const btnDescifrar = document.getElementById('btnDescifrar');
-            const inputTexto = document.getElementById('inputTexto');
-            const cuadroEncriptado = document.getElementById('cuadroEncriptado');
-            const cuadroDescencriptado = document.getElementById('cuadroDescencriptado');
-
-            // Función para encriptar el texto
-            const encriptarTexto = () => {
-                const textoOriginal = inputTexto.value;
-                // Lógica de encriptado (puedes personalizar esta parte)
-                const textoEncriptado = btoa(textoOriginal);
-                cuadroEncriptado.textContent = textoEncriptado;
-            };
-
-            // Función para descifrar el texto
-            const descifrarTexto = () => {
-                const textoEncriptado = cuadroEncriptado.textContent;
-                // Lógica de descifrado (puedes personalizar esta parte)
-                const textoDescencriptado = atob(textoEncriptado);
-                cuadroDescencriptado.textContent = textoDescencriptado;
-            };
-
-            // Evento click para encriptar
-            btnEncriptar.addEventListener('click', encriptarTexto);
-
-            // Evento click para descifrar
-            btnDescifrar.addEventListener('click', descifrarTexto);
-
-            // Evento para cambiar el fondo del textarea al escribir
-            inputTexto.addEventListener('input', function () {
-                this.classList.add('textarea-active');
-            });
-
-            // Evento para restaurar el fondo del textarea al perder el foco
-            inputTexto.addEventListener('blur', function () {
-                this.classList.remove('textarea-active');
-            });
-        });
-    </script>
 </body>
 
 </html>
