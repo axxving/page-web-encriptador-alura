@@ -37,7 +37,52 @@ p {
     justify-content: center;
 }
 
+/* Estilos para el textarea "glass" */
+.glass-textarea {
+    background-color: #ffffff3d;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    color: white !important;
+    padding: 10px;
+    height: 200px;
+    /* Ajusta la altura según tus necesidades */
+}
 
+.glass-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    /* Color del placeholder */
+}
+
+/* Estilos personalizados para el efecto "glass" en Bootstrap */
+
+/* Anula el fondo blanco cuando el textarea obtiene el foco */
+.glass-textarea:focus {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Establece el color del borde a blanco */
+.glass-textarea {
+    border-color: white;
+}
+
+/* Cambia el color del texto cuando se escribe */
+.glass-textarea::placeholder,
+.glass-textarea {
+    color: white;
+}
+
+/* Ajusta el color del borde inferior en estado normal */
+.glass-textarea {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Anula el resplandor azul en el enfoque del textarea */
+.glass-textarea:focus {
+    box-shadow: none;
+    border-color: white;
+}
 
 
 
