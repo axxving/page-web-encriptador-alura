@@ -111,18 +111,14 @@ p {
 
 
 /* Estilos para la sección con video de fondo */
+video{
+    width: 100%;
+    height: 100%;
+}
+
 .video-background {
     position: relative;
     overflow: hidden;
-}
-
-.video-background video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    z-index: -1;
 }
 
 /* Ajustes para dispositivos móviles */
@@ -130,4 +126,22 @@ p {
     .video-background video {
         height: 100%;
     }
+}
+
+.video-background video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+
+/* Ajusta el contenedor para ocupar la altura mínima de la pantalla */
+.video-background {
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
 }
