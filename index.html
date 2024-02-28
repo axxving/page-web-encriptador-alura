@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
@@ -20,7 +19,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/styles.css">
-
 </head>
 
 <body>
@@ -42,22 +40,23 @@
                     <!-- Texto Mediano -->
                     <p>Escribe tu mensaje en el área de escritura y conviértelo en un código seguro.</p>
                     <!-- Área de Escritura -->
-                    <textarea class="form-control mb-3 glass-textarea" placeholder="Escribe aquí"></textarea>
+                    <textarea id="inputTexto" class="form-control mb-3 glass-textarea" placeholder="Escribe aquí"
+                        pattern="[a-z]+" oninput="validarTexto()"></textarea>
                     <!-- Botones -->
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <button class="btn btn-outline-light me-md-2">Encriptar</button>
-                        <button class="btn btn-outline-success">Descifrar</button>
+                        <button id="btnEncriptar" class="btn btn-outline-light me-md-2">Encriptar</button>
+                        <button id="btnDescifrar" class="btn btn-outline-success">Descifrar</button>
                     </div>
                 </div>
                 <!-- Columna Derecha -->
                 <div class="col-md-6">
                     <!-- Cuadro Superior -->
-                    <div class="bg-light p-4 mb-3 mt-3">
+                    <div id="cuadroEncriptado" class="bg-light p-4 mb-3 mt-3">
                         <h2>Texto encriptado</h2>
                         <!-- Contenido del Cuadro Superior -->
                     </div>
                     <!-- Cuadro Inferior -->
-                    <div class="bg-light p-4 mb-3 mt-3">
+                    <div id="cuadroDescencriptado" class="bg-light p-4 mb-3 mt-3">
                         <h2>Texto descencriptado</h2>
                         <!-- Contenido del Cuadro Inferior -->
                     </div>
@@ -65,7 +64,28 @@
             </div>
         </div>
     </section>
-    
+
+    <!-- Modal de Advertencia -->
+    <div class="modal fade" id="modalAdvertencia" tabindex="-1" aria-labelledby="modalAdvertenciaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAdvertenciaLabel">Advertencia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    No puedes ingresar números, símbolos o letras mayúsculas. Por favor, ingresa solo letras en
+                    minúsculas.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Scroll Reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
@@ -75,6 +95,63 @@
     <!-- Boxicons -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="/js/main.js"></script>
+
+    <script>
+        function validarTexto() {
+            const inputTexto = document.getElementById('inputTexto');
+            const modalAdvertencia = new bootstrap.Modal(document.getElementById('modalAdvertencia'));
+
+            // Expresión regular para permitir solo letras minúsculas
+            const regex = /^[a-z]+$/;
+
+            if (!regex.test(inputTexto.value)) {
+                // Mostrar el modal de advertencia
+                modalAdvertencia.show();
+                // Limpiar el contenido del textarea
+                inputTexto.value = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const btnEncriptar = document.getElementById('btnEncriptar');
+            const btnDescifrar = document.getElementById('btnDescifrar');
+            const inputTexto = document.getElementById('inputTexto');
+            const cuadroEncriptado = document.getElementById('cuadroEncriptado');
+            const cuadroDescencriptado = document.getElementById('cuadroDescencriptado');
+
+            // Función para encriptar el texto
+            const encriptarTexto = () => {
+                const textoOriginal = inputTexto.value;
+                // Lógica de encriptado (puedes personalizar esta parte)
+                const textoEncriptado = btoa(textoOriginal);
+                cuadroEncriptado.textContent = textoEncriptado;
+            };
+
+            // Función para descifrar el texto
+            const descifrarTexto = () => {
+                const textoEncriptado = cuadroEncriptado.textContent;
+                // Lógica de descifrado (puedes personalizar esta parte)
+                const textoDescencriptado = atob(textoEncriptado);
+                cuadroDescencriptado.textContent = textoDescencriptado;
+            };
+
+            // Evento click para encriptar
+            btnEncriptar.addEventListener('click', encriptarTexto);
+
+            // Evento click para descifrar
+            btnDescifrar.addEventListener('click', descifrarTexto);
+
+            // Evento para cambiar el fondo del textarea al escribir
+            inputTexto.addEventListener('input', function () {
+                this.classList.add('textarea-active');
+            });
+
+            // Evento para restaurar el fondo del textarea al perder el foco
+            inputTexto.addEventListener('blur', function () {
+                this.classList.remove('textarea-active');
+            });
+        });
+    </script>
 </body>
 
 </html>
