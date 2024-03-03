@@ -189,7 +189,7 @@ video {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 9999;
     /* Capa superior para que esté por encima de otros elementos */
     transition: opacity 0.5s;
     /* Transición suave de la opacidad */
@@ -199,7 +199,7 @@ video {
 
 /* Estilos para el spinner de carga */
 .loader {
-    border: 8px solid var(--blanco);
+    border: 8px solid #f3f3f3;
     /* Círculo exterior gris claro */
     border-top: 8px solid var(--gris);
     /* Círculo superior azul */
@@ -224,7 +224,23 @@ video {
 }
 
 /* Ocultar la pantalla de carga después de que la página haya cargado */
+body:not(.loaded) .loader-wrapper {
+    opacity: 1;
+}
+
+/* Mostrar el contenido de la página después de cargar completamente */
+body.loaded .loader-wrapper {
+    opacity: 0;
+    pointer-events: none;
+    /* Permitir interacción con elementos debajo de la pantalla de carga */
+}
+
+/* Contenido de la página */
 #content {
     display: none;
     /* Inicialmente oculto */
+}
+
+body.loaded #content {
+    display: block;
 }
