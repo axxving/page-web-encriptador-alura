@@ -1,0 +1,17 @@
+{
+  "name": "page-web",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.4.15",
+    "astro-bootstrap": "^0.6.2",
+    "bootstrap": "^5.3.3"
+  }
+}
