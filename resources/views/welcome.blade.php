@@ -77,4 +77,8 @@
         </div>
     </div>
 
+    <div>
+        <h1>Hola mundo</h1>
+    </div>
+
     @include("layouts.scripts")
