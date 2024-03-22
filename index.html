@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link rel="shortcut icon" href="/imgs/logos/logo-transparente.png" type="image/x-icon">
@@ -21,24 +22,33 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <link rel="stylesheet" href="/css/header.css">
+
+    <link rel="stylesheet" href="/css/spinner.css">
 </head>
 
 <body>
 
     <!-- Estructura de la pantalla de carga -->
     <div class="loader-wrapper">
-        <div class="loader"></div>
+        <div class="loader">
+            <div></div>
+            <div></div>
+        </div>
     </div>
 
-    <div class="container-fluid" id="header">
+
+
+
+    <div class="container-fluid p-1" id="header">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-md">
                         <div class="container-fluid">
                             <a class="navbar-brand" href="#">
-                                <i class="bi bi-house-door-fill"></i> Logo
+                                <i class="bi bi-shield-lock-fill"></i> Encripta
                             </a>
+
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                 aria-label="Toggle navigation">
@@ -47,7 +57,7 @@
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                                        <a class="nav-link" aria-current="page" href="#">Inicio</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Acerca de</a>
