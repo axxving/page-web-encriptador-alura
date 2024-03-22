@@ -73,61 +73,60 @@
     <section class="container-fluid video-background pt-5 pb-5" id="encriptador">
         <video autoplay muted loop playsinline>
             <source src="/imgs/animation_-_7529 (720p).mp4" type="video/mp4">
-            <!-- Agrega más formatos de video si lo necesitas para compatibilidad con navegadores -->
         </video>
-        <div class="container">
+        <div class="container mt-5">
             <div class="row">
                 <!-- Columna Izquierda -->
                 <div class="col-md-6">
                     <!-- Texto Grande -->
-                    <h1 class="display-3">Encriptador de Textos</h1>
+                    <h1 class="display-3 titulo">Encriptador</h1>
                     <!-- Texto Pequeño -->
                     <p class="lead">Protege tu información con nuestro potente encriptador de textos.</p>
                     <!-- Select para elegir tipo de encriptación -->
-                    <select class="form-select mb-3" aria-label="Tipo de encriptación">
+                    <select class="form-select glass-style mb-3" aria-label="Tipo de encriptación">
                         <option selected>Selecciona tipo de encriptación</option>
                         <option value="1">Encriptación A</option>
                         <option value="2">Encriptación B</option>
                         <option value="3">Encriptación C</option>
                     </select>
                     <!-- Texto Mediano -->
-                    <p>Escribe tu mensaje en el área de escritura y conviértelo en un código seguro.</p>
+                    <p class="small">Escribe tu mensaje en el área de escritura y conviértelo en un código seguro.</p>
                     <!-- Área de Escritura -->
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="bi bi-pencil-fill"></i></span>
-                        <input id="inputTexto" class="form-control glass-textarea" placeholder="Escribe aquí"
-                            pattern="[a-z]+" oninput="validarTexto()"></input>
+                        <input id="inputTexto" class="form-control glass-input" placeholder="Escribe aquí"
+                            pattern="[a-z]+" oninput="validarTexto()">
                     </div>
 
                     <!-- Botones -->
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <button id="btnEncriptar" class="btn btn-outline-light me-md-2">Encriptar</button>
-                        <button id="btnDescifrar" class="btn btn-outline-success">Descifrar</button>
+                        <button id="btnEncriptar" class="btn btn-outline-success me-md-2">Encriptar</button>
+                        <button id="btnDescifrar" class="btn btn-outline-warning">Descifrar</button>
                     </div>
                 </div>
 
                 <!-- Columna Derecha -->
                 <div class="col-md-6">
                     <!-- Cuadro Superior -->
-                    <div id="cuadroEncriptado" class="card bg-light p-4 mb-3 mt-3">
+                    <div id="cuadroEncriptado" class="card p-4 mb-3 mt-3 glass-card">
                         <h2 class="card-title">Texto encriptado</h2>
                         <!-- Contenido del Cuadro Superior -->
-                        <input id="textoEncriptado" class="form-control mb-3 glass-textarea" readonly></input>
+                        <input id="textoEncriptado" class="form-control mb-3 glass-textarea" readonly>
                     </div>
+
                     <!-- Cuadro Inferior -->
-                    <div id="cuadroDescencriptado" class="card bg-light p-4 mb-3">
+                    <div id="cuadroDescencriptado" class="card p-4 mb-3 glass-card">
                         <h2 class="card-title">Texto descifrado</h2>
                         <!-- Contenido del Cuadro Inferior -->
-                        <input id="textoDescencriptado" class="form-control mb-3 glass-textarea" readonly></input>
+                        <input id="textoDescencriptado" class="form-control mb-3 glass-textarea" readonly>
                     </div>
                     <!-- Input con icono de copiar y pegar -->
                     <div class="input-group mb-3">
-                        <span class="input-group-text bg-light"><i class="bi bi-clipboard"></i></span>
-                        <input type="text" class="form-control" placeholder="Texto a copiar/pegar"
+                        <span class="input-group-text"><i class="bi bi-clipboard"></i></span>
+                        <input type="text" class="form-control glass-input" placeholder="Texto a copiar/pegar"
                             aria-label="Texto a copiar/pegar">
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

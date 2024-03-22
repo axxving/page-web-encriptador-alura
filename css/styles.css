@@ -2,7 +2,7 @@
 
 :root {
     --blanco: #ffffff;
-    --gris: #e2e2e2;
+    --gris: #c5c5c5;
     --negro: #000000;
     --transparente: #ffffff10;
 }
@@ -10,6 +10,129 @@
 * {
     font-family: "Montserrat", sans-serif;
 }
+
+.titulo {
+    font-weight: bolder;
+    color: var(--blanco);
+}
+
+.lead {
+    color: var(--gris);
+}
+
+.small {
+    color: var(--gris);
+}
+
+.form-select {
+    background-color: rgba(0, 0, 0, 0.116);
+    backdrop-filter: blur(10px);
+    border: 1px solid #ffffff18;
+    padding: 10px;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color: var(--blanco);
+}
+
+.form-select option {
+    background-color: rgb(0, 0, 0);
+    backdrop-filter: blur(10px);
+    border: none;
+    padding: 10px;
+    color: var(--blanco);
+}
+
+.form-select option:checked {
+    background-color: var(--blanco);
+    color: var(--negro);
+}
+
+.form-select:focus {
+    border-color: var(--blanco);
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.466);
+}
+
+.glass-input {
+    background-color: var(--transparente);
+    backdrop-filter: blur(10px);
+    border: none;
+    color: var(--blanco);
+}
+
+.glass-input::placeholder {
+    color: var(--blanco);
+}
+
+/* Estilos para el ícono en el grupo de entrada */
+.input-group-text {
+    background-color: var(--transparente);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 10px 0 0 10px;
+    color: var(--blanco);
+}
+
+.form-control:focus {
+    border-color: var(--blanco);
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.466);
+    background-color: var(--transparente);
+    color: var(--blanco);
+}
+
+
+
+
+
+/* Estilos Glass para los cuadros */
+.glass-card {
+    background-color: var(--transparente);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el título dentro de los cuadros */
+.card-title {
+    color: var(--blanco);
+}
+
+/* Estilos para los inputs dentro de los cuadros */
+.glass-textarea {
+    background-color: var(--transparente);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--blanco);
+}
+
+/* Estilos para el foco de los inputs dentro de los cuadros */
+.glass-textarea:focus {
+    border-color: var(--blanco);
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.466);
+    background-color: var(--transparente);
+    color: var(--blanco);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -92,4 +215,3 @@ video {
 .btn-close-white {
     color: white;
 }
-
