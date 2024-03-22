@@ -67,6 +67,7 @@ function borrarCampos() {
     document.getElementById('inputTexto').value = '';
     document.getElementById('textoEncriptado').value = '';
     document.getElementById('textoDescencriptado').value = '';
+    document.getElementById('textoACopiar').value = ''; // Nuevo: Limpiar campo de copiar y pegar
 
     // Restablece la selección del tipo de encriptación al valor predeterminado
     document.getElementById('tipoEncriptacion').selectedIndex = 0;
@@ -80,10 +81,31 @@ function copiarTexto() {
     if (textoACopiar === '') {
         textoACopiar = document.getElementById('textoDescencriptado').value;
     }
+    // Si no hay texto para copiar, mostrar un mensaje
+    if (textoACopiar === '') {
+        textoACopiar = "Aun no hay texto";
+    }
+    // Actualizamos el valor del input de copiar y pegar con el texto encriptado
     document.getElementById('textoACopiar').value = textoACopiar;
-    document.getElementById('textoACopiar').select();
-    document.execCommand('copy');
+    // Copiamos el texto al portapapeles
+    navigator.clipboard.writeText(textoACopiar)
+        .then(() => {
+            // Mostramos un tooltip indicando que el texto se ha copiado
+            let tooltip = new bootstrap.Tooltip(document.getElementById('copyIcon'), {
+                title: "Texto copiado",
+                trigger: 'manual'
+            });
+            tooltip.show();
+            // Ocultamos el tooltip después de 1.5 segundos
+            setTimeout(() => {
+                tooltip.hide();
+            }, 1500);
+        })
+        .catch(err => {
+            console.error('No se pudo copiar el texto: ', err);
+        });
 }
+
 
 // Event listener para el botón de encriptar
 document.getElementById('btnEncriptar').addEventListener('click', function () {

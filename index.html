@@ -129,12 +129,13 @@
                         <!-- Contenido del Cuadro Inferior -->
                         <input id="textoDescencriptado" class="form-control mb-3 glass-textarea" readonly>
                     </div>
-                    <!-- Input con icono de copiar y pegar para que el usario copie el texto cifrado-->
+                    <!-- Input con icono de copiar y pegar para que el usuario copie el texto cifrado-->
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="copyIcon" data-bs-toggle="tooltip" data-bs-placement="top"
-                            title="Haz clic para copiar"><i class="bi bi-clipboard" onclick="copiarTexto()"></i></span>
+                        <span title="Copiar y pegar" class="input-group-text" id="copyIcon" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Haz clic para copiar" onclick="copiarTexto()"><i
+                                class="bi bi-clipboard"></i></span>
                         <input id="textoACopiar" type="text" class="form-control glass-input"
-                            placeholder="Texto a copiar/pegar" aria-label="Texto a copiar/pegar">
+                            placeholder="Copiar el texto cifrado" aria-label="Texto a copiar/pegar">
                     </div>
 
                 </div>
