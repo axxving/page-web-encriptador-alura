@@ -11,7 +11,7 @@
     font-family: "Montserrat", sans-serif;
 }
 
-body{
+body {
     background-color: var(--negro);
 }
 
@@ -67,7 +67,6 @@ body{
     color: var(--blanco);
 }
 
-/* Estilos para el ícono en el grupo de entrada */
 .input-group-text {
     background-color: var(--transparente);
     backdrop-filter: blur(10px);
@@ -83,11 +82,6 @@ body{
     color: var(--blanco);
 }
 
-
-
-
-
-/* Estilos Glass para los cuadros */
 .glass-card {
     background-color: var(--transparente);
     backdrop-filter: blur(10px);
@@ -97,12 +91,10 @@ body{
     margin-bottom: 20px;
 }
 
-/* Estilos para el título dentro de los cuadros */
 .card-title {
     color: var(--blanco);
 }
 
-/* Estilos para los inputs dentro de los cuadros */
 .glass-textarea {
     background-color: var(--transparente);
     border: none;
@@ -111,7 +103,6 @@ body{
     color: var(--blanco);
 }
 
-/* Estilos para el foco de los inputs dentro de los cuadros */
 .glass-textarea:focus {
     border-color: var(--blanco);
     box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.466);
@@ -119,44 +110,14 @@ body{
     color: var(--blanco);
 }
 
-i{
+i {
     font-size: 1.2rem;
 }
 
-
-
-.bix{
+.bix {
     font-size: 2rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Estilos para la sección con video de fondo */
 video {
     width: 100%;
     height: 100%;
@@ -167,7 +128,6 @@ video {
     overflow: hidden;
 }
 
-/* Ajustes para dispositivos móviles */
 @media (max-width: 767px) {
     .video-background video {
         height: 100%;
@@ -184,15 +144,12 @@ video {
     object-fit: cover;
 }
 
-
-/* Ajusta el contenedor para ocupar la altura mínima de la pantalla */
 .video-background {
     min-height: 100vh !important;
     display: flex !important;
     align-items: center !important;
 }
 
-/* Estilos para el modal "glass" rojo */
 .glass-modal {
     background-color: rgba(255, 0, 0, 0.322);
     backdrop-filter: blur(10px);
@@ -219,7 +176,6 @@ video {
     color: #ffffff !important;
 }
 
-/* Cambia el color de la "X" para cerrar a blanco */
 .btn-close-white {
     color: white;
 }
