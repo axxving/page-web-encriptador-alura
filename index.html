@@ -6,15 +6,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="/imgs/logos/logo-transparente.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/imgs/favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-    <title>Encriptador | axxving</title>
 
     <link rel="stylesheet" href="/css/styles.css">
 
@@ -25,6 +23,8 @@
     <link rel="stylesheet" href="/css/spinner.css">
 
     <link rel="stylesheet" href="/css/footer.css">
+
+    <title>Encriptador | axxving</title>
 </head>
 
 <body>
@@ -87,22 +87,23 @@
                     <!-- Texto Pequeño -->
                     <p class="lead">Protege tu información con nuestro potente encriptador de textos.</p>
                     <!-- Select para elegir tipo de encriptación -->
-                    <select class="form-select glass-style mb-3" aria-label="Tipo de encriptación">
-                        <option selected>Selecciona tipo de encriptación</option>
-                        <option value="1">Encriptación A</option>
-                        <option value="2">Encriptación B</option>
-                        <option value="3">Encriptación C</option>
+                    <select id="tipoEncriptacion" class="form-select glass-style mb-3"
+                        aria-label="Tipo de encriptación">
+                        <option selected disabled>Selecciona tipo de encriptación</option>
+                        <option value="1">Encriptación Sencilla</option>
+                        <option value="2">SHA-256</option>
+                        <option value="3">Cifrado César</option>
                     </select>
+
                     <!-- Texto Mediano -->
                     <p class="small">Escribe tu mensaje en el área de escritura y conviértelo en un código seguro.</p>
-                    <!-- Área de Escritura -->
+                    <!-- Área de Escritura para que usuario ingrese el texto que quiere encriptar-->
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="bi bi-pencil-fill"></i></span>
-                        <input id="inputTexto" class="form-control glass-input" placeholder="Escribe aquí"
-                            pattern="[a-z]+" oninput="validarTexto()">
+                        <input id="inputTexto" class="form-control glass-input" placeholder="Escribe aquí">
                     </div>
 
-                    <!-- Botones -->
+                    <!-- Botones para cifrar o descifrar-->
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                         <button id="btnEncriptar" class="btn btn-outline-success me-md-2">Encriptar</button>
                         <button id="btnDescifrar" class="btn btn-outline-warning">Descifrar</button>
@@ -113,27 +114,28 @@
                 <div class="col-md-6">
                     <!-- Cuadro Superior -->
                     <div id="cuadroEncriptado" class="card p-4 mb-3 mt-3 glass-card">
-                        <h2 class="card-title">Texto encriptado</h2>
+                        <!-- Se muestra el texto cifrado-->
+                        <h2 class="card-title">Texto Cifrado</h2>
                         <!-- Contenido del Cuadro Superior -->
                         <input id="textoEncriptado" class="form-control mb-3 glass-textarea" readonly>
                     </div>
 
                     <!-- Cuadro Inferior -->
                     <div id="cuadroDescencriptado" class="card p-4 mb-3 glass-card">
+                        <!-- Se muestra el texto descifrado-->
                         <h2 class="card-title">Texto descifrado</h2>
                         <!-- Contenido del Cuadro Inferior -->
                         <input id="textoDescencriptado" class="form-control mb-3 glass-textarea" readonly>
                     </div>
-                    <!-- Input con icono de copiar y pegar -->
+                    <!-- Input con icono de copiar y pegar para que el usario copie el texto cifrado-->
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="bi bi-clipboard"></i></span>
-                        <input type="text" class="form-control glass-input" placeholder="Texto a copiar/pegar"
-                            aria-label="Texto a copiar/pegar">
+                        <input id="textoACopiar" type="text" class="form-control glass-input"
+                            placeholder="Texto a copiar/pegar" aria-label="Texto a copiar/pegar">
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 
     <footer class="container-fluid mt-1" id="footer">
@@ -178,8 +180,8 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="/js/main.js"></script>
 </body>
 

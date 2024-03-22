@@ -1,77 +1,148 @@
-function validarTexto() {
-    const inputTexto = document.getElementById('inputTexto');
-    const modalAdvertencia = new bootstrap.Modal(document.getElementById('modalAdvertencia'));
+// Función para validar y encriptar el texto
+function encriptarTexto() {
+    let texto = document.getElementById('inputTexto').value;
+    let tipoEncriptacion = document.getElementById('tipoEncriptacion').value;
+    let textoEncriptado = '';
 
-    // Expresión regular para permitir solo letras minúsculas
-    const regex = /^[a-z]+$/;
-
-    if (!regex.test(inputTexto.value)) {
-        // Mostrar el modal de advertencia
-        modalAdvertencia.show();
-        // Limpiar el contenido del textarea
-        inputTexto.value = '';
-        // Deshabilitar el textarea
-        inputTexto.disabled = true;
+    if (tipoEncriptacion === '1') {
+        textoEncriptado = encriptacionSencilla(texto);
+    } else if (tipoEncriptacion === '2') {
+        textoEncriptado = sha256(texto);
+    } else if (tipoEncriptacion === '3') {
+        let desplazamiento = parseInt(prompt("Introduce el desplazamiento para el cifrado César:", 3));
+        textoEncriptado = cifradoCesar(texto, desplazamiento);
     }
+
+    // Muestra el texto encriptado en el campo correspondiente
+    document.getElementById('textoEncriptado').value = textoEncriptado;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const btnEncriptar = document.getElementById('btnEncriptar');
-    const btnDescifrar = document.getElementById('btnDescifrar');
-    const inputTexto = document.getElementById('inputTexto');
-    const cuadroEncriptado = document.getElementById('cuadroEncriptado');
-    const cuadroDescencriptado = document.getElementById('cuadroDescencriptado');
-    const modalAdvertencia = new bootstrap.Modal(document.getElementById('modalAdvertencia'));
+// Función para descifrar el texto
+function descifrarTexto() {
+    let textoEncriptado = document.getElementById('textoEncriptado').value;
+    let tipoEncriptacion = document.getElementById('tipoEncriptacion').value;
+    let textoDescifrado = '';
 
-    // Función para encriptar el texto
-    const encriptarTexto = () => {
-        const textoOriginal = inputTexto.value;
-        // Lógica de encriptado (puedes personalizar esta parte)
-        const textoEncriptado = btoa(textoOriginal);
-        cuadroEncriptado.value = textoEncriptado;
-    };
+    if (tipoEncriptacion === '1') {
+        // Para la encriptación sencilla, convertimos el texto encriptado a mayúsculas
+        textoEncriptado = textoEncriptado.toUpperCase();
 
-    // Función para descifrar el texto
-    const descifrarTexto = () => {
-        const textoEncriptado = cuadroEncriptado.value;
-        // Lógica de descifrado (puedes personalizar esta parte)
-        const textoDescencriptado = atob(textoEncriptado);
-        cuadroDescencriptado.value = textoDescencriptado;
-    };
+        // Recorremos cada carácter del texto encriptado
+        for (let i = 0; i < textoEncriptado.length; i++) {
+            let char = textoEncriptado[i];
 
-    // Evento click para encriptar
-    btnEncriptar.addEventListener('click', function () {
-        validarTexto(); // Llamar a la función de validación antes de encriptar
-        encriptarTexto();
-    });
+            // Si el carácter es una letra
+            if (char >= 'A' && char <= 'Z') {
+                // Desplazamos el carácter en una posición hacia la izquierda en el alfabeto
+                let codigoAscii = char.charCodeAt(0);
+                let nuevoCodigoAscii = ((codigoAscii - 65 - 1 + 26) % 26) + 65;
+                textoDescifrado += String.fromCharCode(nuevoCodigoAscii);
+            } else {
+                // Si no es una letra, simplemente lo agregamos sin modificar
+                textoDescifrado += char;
+            }
+        }
+    } else if (tipoEncriptacion === '2') {
+        // No es posible descifrar un hash SHA-256, ya que es irreversible
+        alert("No se puede descifrar un hash SHA-256, ya que es irreversible.");
+        return;
+    } else if (tipoEncriptacion === '3') {
+        let desplazamiento = parseInt(prompt("Introduce el desplazamiento para el cifrado César:", 3));
+        // Aplicamos el descifrado César invirtiendo el desplazamiento
+        textoDescifrado = cifradoCesar(textoEncriptado, -desplazamiento);
+    }
 
-    // Evento click para descifrar
-    btnDescifrar.addEventListener('click', function () {
-        validarTexto(); // Llamar a la función de validación antes de descifrar
-        descifrarTexto();
-    });
+    // Muestra el texto descifrado en el campo correspondiente
+    document.getElementById('textoDescencriptado').value = textoDescifrado;
+}
 
-    // Evento para cerrar el modal al hacer clic en los botones de cerrar o 'x'
-    const modalCloseButtons = document.querySelectorAll('[data-bs-dismiss="modal"]');
-    modalCloseButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            modalAdvertencia.hide();
-            // Habilitar el textarea al cerrar el modal
-            inputTexto.disabled = false;
-        });
-    });
 
-    // Evento para cambiar el fondo del textarea al escribir
-    inputTexto.addEventListener('input', function () {
-        this.classList.add('textarea-active');
-    });
 
-    // Evento para restaurar el fondo del textarea al perder el foco
-    inputTexto.addEventListener('blur', function () {
-        this.classList.remove('textarea-active');
-    });
+// Función para copiar el texto encriptado o descifrado
+function copiarTexto() {
+    let textoACopiar = document.getElementById('textoEncriptado').value;
+    // Si estamos mostrando el texto descifrado, copiamos desde el campo correspondiente
+    if (textoACopiar === '') {
+        textoACopiar = document.getElementById('textoDescencriptado').value;
+    }
+    document.getElementById('textoACopiar').value = textoACopiar;
+    document.getElementById('textoACopiar').select();
+    document.execCommand('copy');
+}
+
+// Event listener para el botón de encriptar
+document.getElementById('btnEncriptar').addEventListener('click', function () {
+    encriptarTexto();
+    copiarTexto();
 });
 
+// Event listener para el botón de descifrar
+document.getElementById('btnDescifrar').addEventListener('click', function () {
+    descifrarTexto();
+    copiarTexto();
+});
+
+// Función para encriptación sencilla
+function encriptacionSencilla(texto) {
+    // Convertimos el texto a minúsculas para facilitar el manejo
+    texto = texto.toLowerCase();
+
+    let resultado = '';
+
+    // Recorremos cada carácter del texto
+    for (let i = 0; i < texto.length; i++) {
+        let char = texto[i];
+
+        // Si el carácter es una letra
+        if (char >= 'a' && char <= 'z') {
+            // Desplazamos el carácter en una posición hacia la derecha en el alfabeto
+            let codigoAscii = char.charCodeAt(0);
+            let nuevoCodigoAscii = ((codigoAscii - 97 + 1) % 26) + 97;
+            resultado += String.fromCharCode(nuevoCodigoAscii);
+        } else {
+            // Si no es una letra, simplemente lo agregamos sin modificar
+            resultado += char;
+        }
+    }
+
+    return resultado;
+}
+
+// Función para SHA-256
+function sha256(texto) {
+    // Verifica que CryptoJS esté cargado en el entorno
+    if (typeof CryptoJS === 'undefined') {
+        console.error('CryptoJS no está cargado. Asegúrate de incluirlo en tu proyecto.');
+        return null;
+    }
+
+    // Calcula el hash SHA-256 del texto utilizando CryptoJS
+    return CryptoJS.SHA256(texto).toString(CryptoJS.enc.Hex);
+}
+
+
+// Función para cifrado César
+function cifradoCesar(texto, desplazamiento) {
+    // Implementa tu lógica de cifrado César aquí
+    let resultado = '';
+
+    for (let i = 0; i < texto.length; i++) {
+        let charCode = texto.charCodeAt(i);
+        let encryptedCharCode;
+
+        if (charCode >= 65 && charCode <= 90) { // Rango de caracteres A-Z
+            encryptedCharCode = ((charCode - 65 + desplazamiento) % 26) + 65;
+        } else if (charCode >= 97 && charCode <= 122) { // Rango de caracteres a-z
+            encryptedCharCode = ((charCode - 97 + desplazamiento) % 26) + 97;
+        } else {
+            encryptedCharCode = charCode; // Mantener caracteres no alfabéticos sin cambios
+        }
+
+        resultado += String.fromCharCode(encryptedCharCode);
+    }
+
+    return resultado;
+}
 
 // Agrega la clase "loaded" al body cuando la página haya cargado completamente
 window.addEventListener("load", function () {
