@@ -11,6 +11,10 @@
     font-family: "Montserrat", sans-serif;
 }
 
+body{
+    background-color: var(--negro);
+}
+
 .titulo {
     font-weight: bolder;
     color: var(--blanco);
@@ -115,11 +119,15 @@
     color: var(--blanco);
 }
 
+i{
+    font-size: 1.2rem;
+}
 
 
 
-
-
+.bix{
+    font-size: 2rem;
+}
 
 
 
