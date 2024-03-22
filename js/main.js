@@ -56,6 +56,21 @@ function descifrarTexto() {
     document.getElementById('textoDescencriptado').value = textoDescifrado;
 }
 
+// Event listener para el botón de borrar
+document.getElementById('btnBorrar').addEventListener('click', function () {
+    borrarCampos();
+});
+
+// Función para borrar todos los campos y restablecer la selección del tipo de encriptación
+function borrarCampos() {
+    // Borra el texto de los campos de entrada y salida
+    document.getElementById('inputTexto').value = '';
+    document.getElementById('textoEncriptado').value = '';
+    document.getElementById('textoDescencriptado').value = '';
+
+    // Restablece la selección del tipo de encriptación al valor predeterminado
+    document.getElementById('tipoEncriptacion').selectedIndex = 0;
+}
 
 
 // Función para copiar el texto encriptado o descifrado

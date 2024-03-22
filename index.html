@@ -106,7 +106,9 @@
                     <!-- Botones para cifrar o descifrar-->
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                         <button id="btnEncriptar" class="btn btn-outline-success me-md-2">Encriptar</button>
-                        <button id="btnDescifrar" class="btn btn-outline-warning">Descifrar</button>
+                        <button id="btnDescifrar" class="btn btn-outline-warning me-md-2">Descifrar</button>
+                        <button id="btnBorrar" class="btn btn-outline-info">Borrar Todo</button>
+
                     </div>
                 </div>
 
@@ -129,10 +131,12 @@
                     </div>
                     <!-- Input con icono de copiar y pegar para que el usario copie el texto cifrado-->
                     <div class="input-group mb-3">
-                        <span class="input-group-text"><i class="bi bi-clipboard"></i></span>
+                        <span class="input-group-text" id="copyIcon" data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="Haz clic para copiar"><i class="bi bi-clipboard" onclick="copiarTexto()"></i></span>
                         <input id="textoACopiar" type="text" class="form-control glass-input"
                             placeholder="Texto a copiar/pegar" aria-label="Texto a copiar/pegar">
                     </div>
+
                 </div>
             </div>
         </div>
